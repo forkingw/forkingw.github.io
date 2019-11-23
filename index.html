@@ -151,6 +151,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Https-中引入http资源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/23/Https-%E4%B8%AD%E5%BC%95%E5%85%A5http%E8%B5%84%E6%BA%90/">Https 中引入http资源</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/23/Https-%E4%B8%AD%E5%BC%95%E5%85%A5http%E8%B5%84%E6%BA%90/" class="archive-article-date">
+  	<time datetime="2019-11-23T05:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><pre><code>浏览器默认是不允许在HTTPS里面引用HTTP资源的，一般都会弹出提示框，用户确认后才会继续加载，用户体验非常差。而且如果在一个HTTPS页面里动态的引入HTTP资源，比如引入一个js文件，会被直接block掉的。Chrome 21之后，在SSL加密页面embed非SSL的Flash会怎样呢？会被默默的屏蔽掉，只留下一句console报告。</code></pre><h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><pre><code>可以使用iframe的方式引入HTTP资源，比如在HTTPS里面播放优酷的视频，我们可以先在一个HTTP的页面里播放优酷视频，然后将这个页面嵌入到HTTPS页面里就可以了，另外一个典型的例子是在HTTPS页面里通过AJAX的方式请求HTTP资源，Chrome是不允许直接AJAX请求HTTP的。如果两个页面的内容都可以控制的话，当前窗口可以iframe窗口进行通信的。
+对于同时支持HTTPS和HTTP的资源，引用的时候要把引用资源的URL里的协议头去掉，例：//www.example.com/scirpt.js，这样相当于相对路径，即浏览器会自动根据当前是HTTPS还是HTTP来给资源URL补上协议头的，可以达到无缝切换。</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/23/Https-%E4%B8%AD%E5%BC%95%E5%85%A5http%E8%B5%84%E6%BA%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数组去重" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
