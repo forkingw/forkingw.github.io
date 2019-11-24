@@ -6,16 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Https 中引入http资源 | forBlog</title>
+  <title>MongoDB 权限 | forBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述：浏览器默认是不允许在HTTPS里面引用HTTP资源的，一般都会弹出提示框，用户确认后才会继续加载，用户体验非常差。而且如果在一个HTTPS页面里动态的引入HTTP资源，比如引入一个js文件，会被直接block掉的。Chrome 21之后，在SSL加密页面embed非SSL的Flash会怎样呢？会被默默的屏蔽掉，只留下一句console报告。解决方法：可以使用iframe的方式引入HTTP">
+  <meta name="description" content="1. 创建管理员3.x 12&#x2F;&#x2F; 管理员权限$ db.createUser(&amp;#123;user: &quot;admin&quot;,pwd:&quot;admin&quot;,roles:[&quot;root&quot;]&amp;#125;) 2.x 1$ db.addUser(&amp;#123;user: &amp;quot;admin&amp;quot;,pwd:&amp;quot;admin&amp;quot;,roles:[&amp;quot;root&amp;quot;]&amp;#125;) 2. 授权认">
+<meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Https 中引入http资源">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;23&#x2F;Https-%E4%B8%AD%E5%BC%95%E5%85%A5http%E8%B5%84%E6%BA%90&#x2F;index.html">
+<meta property="og:title" content="MongoDB 权限">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;24&#x2F;MongoDB-%E6%9D%83%E9%99%90&#x2F;index.html">
 <meta property="og:site_name" content="forBlog">
-<meta property="og:description" content="问题描述：浏览器默认是不允许在HTTPS里面引用HTTP资源的，一般都会弹出提示框，用户确认后才会继续加载，用户体验非常差。而且如果在一个HTTPS页面里动态的引入HTTP资源，比如引入一个js文件，会被直接block掉的。Chrome 21之后，在SSL加密页面embed非SSL的Flash会怎样呢？会被默默的屏蔽掉，只留下一句console报告。解决方法：可以使用iframe的方式引入HTTP">
+<meta property="og:description" content="1. 创建管理员3.x 12&#x2F;&#x2F; 管理员权限$ db.createUser(&amp;#123;user: &quot;admin&quot;,pwd:&quot;admin&quot;,roles:[&quot;root&quot;]&amp;#125;) 2.x 1$ db.addUser(&amp;#123;user: &amp;quot;admin&amp;quot;,pwd:&amp;quot;admin&amp;quot;,roles:[&amp;quot;root&amp;quot;]&amp;#125;) 2. 授权认">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-23T05:49:53.859Z">
+<meta property="og:updated_time" content="2019-11-24T15:23:49.990Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="forBlog" type="application/atom+xml">
@@ -152,28 +153,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Https-中引入http资源" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MongoDB-权限" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Https 中引入http资源
+      MongoDB 权限
     </h1>
   
 
         
-        <a href="/2019/11/23/Https-%E4%B8%AD%E5%BC%95%E5%85%A5http%E8%B5%84%E6%BA%90/" class="archive-article-date">
-  	<time datetime="2019-11-23T05:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-23</time>
+        <a href="/2019/11/24/MongoDB-%E6%9D%83%E9%99%90/" class="archive-article-date">
+  	<time datetime="2019-11-24T15:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><pre><code>浏览器默认是不允许在HTTPS里面引用HTTP资源的，一般都会弹出提示框，用户确认后才会继续加载，用户体验非常差。而且如果在一个HTTPS页面里动态的引入HTTP资源，比如引入一个js文件，会被直接block掉的。Chrome 21之后，在SSL加密页面embed非SSL的Flash会怎样呢？会被默默的屏蔽掉，只留下一句console报告。</code></pre><h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><pre><code>可以使用iframe的方式引入HTTP资源，比如在HTTPS里面播放优酷的视频，我们可以先在一个HTTP的页面里播放优酷视频，然后将这个页面嵌入到HTTPS页面里就可以了，另外一个典型的例子是在HTTPS页面里通过AJAX的方式请求HTTP资源，Chrome是不允许直接AJAX请求HTTP的。如果两个页面的内容都可以控制的话，当前窗口可以iframe窗口进行通信的。
-对于同时支持HTTPS和HTTP的资源，引用的时候要把引用资源的URL里的协议头去掉，例：//www.example.com/scirpt.js，这样相当于相对路径，即浏览器会自动根据当前是HTTPS还是HTTP来给资源URL补上协议头的，可以达到无缝切换。</code></pre>
+        <h3 id="1-创建管理员"><a href="#1-创建管理员" class="headerlink" title="1. 创建管理员"></a>1. 创建管理员</h3><p>3.x</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 管理员权限</span><br><span class="line"><span class="meta">$</span><span class="bash"> db.createUser(&#123;user: <span class="string">"admin"</span>,<span class="built_in">pwd</span>:<span class="string">"admin"</span>,roles:[<span class="string">"root"</span>]&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>2.x</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.addUser(&#123;user: &quot;admin&quot;,pwd:&quot;admin&quot;,roles:[&quot;root&quot;]&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="2-授权认证"><a href="#2-授权认证" class="headerlink" title="2. 授权认证"></a>2. 授权认证</h3><p>在 shell 中使用 <strong>db.auth()</strong>  进行 用户，密码认证。<br>db.auth(用户,密码)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.auth(&quot;admim&quot;,&quot;admin&quot;)</span><br></pre></td></tr></table></figure>
+<p>返回 1， 表示认证成功。</p>
+<h3 id="3-给使用数据库添加用户"><a href="#3-给使用数据库添加用户" class="headerlink" title="3. 给使用数据库添加用户"></a>3. 给使用数据库添加用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ use test</span><br><span class="line">// 为 数据库 添加专属的用户、密码、及其角色权限。</span><br><span class="line">$ db.createUser(&#123;user: &quot;admin&quot;,pwd:&quot;admin&quot;,roles:[&#123;role:&apos;dbOwner&apos;,db:&apos;test&apos;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-使用-–auth-模式启动-mongodb-的方式"><a href="#4-使用-–auth-模式启动-mongodb-的方式" class="headerlink" title="4. 使用 –auth 模式启动 mongodb 的方式"></a>4. 使用 –auth 模式启动 mongodb 的方式</h3><pre><code>重启 Mongod -f 路径 --auth
+在配置文件中 设置 auth=true
+删除原有的系统服务，重新添加 增加了 --auth 的服务</code></pre><h3 id="5-在-–auth-模式下，利用-用户名、密码-进入数据库，编辑数据。"><a href="#5-在-–auth-模式下，利用-用户名、密码-进入数据库，编辑数据。" class="headerlink" title="5. 在 –auth 模式下，利用 用户名、密码 进入数据库，编辑数据。"></a>5. 在 –auth 模式下，利用 用户名、密码 进入数据库，编辑数据。</h3><pre><code>mongo -u &lt;name&gt; -p &lt;pwd&gt;</code></pre><p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo -u yjq -p 123456 localhost:27017/admin</span><br></pre></td></tr></table></figure>
       
 
       
@@ -181,6 +192,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -231,7 +253,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/23/Https-%E4%B8%AD%E5%BC%95%E5%85%A5http%E8%B5%84%E6%BA%90/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/24/MongoDB-%E6%9D%83%E9%99%90/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -245,18 +267,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/24/MongoDB-%E6%9D%83%E9%99%90/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          MongoDB 权限
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/23/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数组去重</div>
+    <a href="/2019/11/23/Https-%E4%B8%AD%E5%BC%95%E5%85%A5http%E8%B5%84%E6%BA%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Https 中引入http资源</div>
       <i class="icon-circle-right"></i>
     </a>
   

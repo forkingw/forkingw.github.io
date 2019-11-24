@@ -151,6 +151,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MongoDB-权限" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/24/MongoDB-%E6%9D%83%E9%99%90/">MongoDB 权限</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/24/MongoDB-%E6%9D%83%E9%99%90/" class="archive-article-date">
+  	<time datetime="2019-11-24T15:23:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-创建管理员"><a href="#1-创建管理员" class="headerlink" title="1. 创建管理员"></a>1. 创建管理员</h3><p>3.x</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 管理员权限</span><br><span class="line"><span class="meta">$</span><span class="bash"> db.createUser(&#123;user: <span class="string">"admin"</span>,<span class="built_in">pwd</span>:<span class="string">"admin"</span>,roles:[<span class="string">"root"</span>]&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>2.x</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.addUser(&#123;user: &quot;admin&quot;,pwd:&quot;admin&quot;,roles:[&quot;root&quot;]&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="2-授权认证"><a href="#2-授权认证" class="headerlink" title="2. 授权认证"></a>2. 授权认证</h3><p>在 shell 中使用 <strong>db.auth()</strong>  进行 用户，密码认证。<br>db.auth(用户,密码)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ db.auth(&quot;admim&quot;,&quot;admin&quot;)</span><br></pre></td></tr></table></figure>
+<p>返回 1， 表示认证成功。</p>
+<h3 id="3-给使用数据库添加用户"><a href="#3-给使用数据库添加用户" class="headerlink" title="3. 给使用数据库添加用户"></a>3. 给使用数据库添加用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ use test</span><br><span class="line">// 为 数据库 添加专属的用户、密码、及其角色权限。</span><br><span class="line">$ db.createUser(&#123;user: &quot;admin&quot;,pwd:&quot;admin&quot;,roles:[&#123;role:&apos;dbOwner&apos;,db:&apos;test&apos;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="4-使用-–auth-模式启动-mongodb-的方式"><a href="#4-使用-–auth-模式启动-mongodb-的方式" class="headerlink" title="4. 使用 –auth 模式启动 mongodb 的方式"></a>4. 使用 –auth 模式启动 mongodb 的方式</h3><pre><code>重启 Mongod -f 路径 --auth
+在配置文件中 设置 auth=true
+删除原有的系统服务，重新添加 增加了 --auth 的服务</code></pre><h3 id="5-在-–auth-模式下，利用-用户名、密码-进入数据库，编辑数据。"><a href="#5-在-–auth-模式下，利用-用户名、密码-进入数据库，编辑数据。" class="headerlink" title="5. 在 –auth 模式下，利用 用户名、密码 进入数据库，编辑数据。"></a>5. 在 –auth 模式下，利用 用户名、密码 进入数据库，编辑数据。</h3><pre><code>mongo -u &lt;name&gt; -p &lt;pwd&gt;</code></pre><p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo -u yjq -p 123456 localhost:27017/admin</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">MongoDB</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/24/MongoDB-%E6%9D%83%E9%99%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Https-中引入http资源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -385,6 +469,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MongoDB</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
