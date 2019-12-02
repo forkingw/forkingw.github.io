@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="forBlog">
 <meta property="og:description" content="关于mongoose查询到的数据无法修改的问题 实际上mongoose返回的数据并不是object，虽然通过typeof判断类型是Object，但其实mongoose自己封装的一个对象，并且这个对象会对数据进行实时查询以保证其符合预定义的model，而无论添加删除model都不会改变，所以设置无效。  解决方法：  在返回的result对象调用toObject()或toJSON()方法，则可以对它">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-02T10:40:54.707Z">
+<meta property="og:updated_time" content="2019-12-02T10:46:52.535Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="forBlog" type="application/atom+xml">
@@ -394,6 +394,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">MongoDB</a>
               </li>
              
@@ -403,10 +407,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Array 算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">http</a>
               </li>
             
             <div class="clearfix"></div>
